@@ -26,7 +26,7 @@ export class RedisModule {
             await cluster.get('test');
             await cluster.del('test');
 
-            return cluster;
+            return new RedisCluster(cluster);
           },
         },
       ],
