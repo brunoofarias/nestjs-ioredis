@@ -5,7 +5,7 @@ import Redis from 'ioredis';
 import { EventEmitter, Readable } from 'stream';
 
 export class RedisCluster implements Redis.Cluster {
-  isCluster: true = true;
+  isCluster: true;
   options: Redis.ClusterOptions;
   status: string;
 
