@@ -8,6 +8,9 @@ export class RedisCluster implements Redis.Cluster {
   isCluster: true;
   options: Redis.ClusterOptions;
   status: string;
+  constructor() {
+    throw new Error('This is a placeholder to be used via DI only!');
+  }
 
   connect(): Promise<void> {
     throw new Error('Method not implemented.');
