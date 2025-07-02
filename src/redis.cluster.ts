@@ -5,22 +5,9 @@ import Redis from 'ioredis';
 import { EventEmitter, Readable } from 'stream';
 
 export class RedisCluster implements Redis.Cluster {
-  private readonly _cluster: Redis.Cluster;
   isCluster: true = true;
   options: Redis.ClusterOptions;
   status: string;
-
-  constructor(cluster: Redis.Cluster) {
-    this._cluster = cluster;
-    this.options = cluster.options;
-    this.status = cluster.status;
-  }
-
-  // @ts-expect-error
-  sendCommand(command: Redis.Command, stream?: unknown): any {
-    // @ts-expect-error
-    return this._cluster.sendCommand(command, stream);
-  }
 
   connect(): Promise<void> {
     throw new Error('Method not implemented.');
@@ -89,6 +76,12 @@ export class RedisCluster implements Redis.Cluster {
     throw new Error('Method not implemented.');
   }
   defineCommand(name: string, definition: { numberOfKeys?: number; lua?: string }): void {
+    throw new Error('Method not implemented.');
+  }
+  // @ts-expect-error
+  sendCommand(command: Redis.Command, stream?: unknown): any;
+  // @ts-expect-error
+  sendCommand(): void {
     throw new Error('Method not implemented.');
   }
   bitcount(key: Redis.KeyType, callback: Redis.Callback<number>): void;
